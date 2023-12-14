@@ -8,29 +8,17 @@
             <thead>
                 <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Task Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+                <tr v-for="(todo , index) in todos" :key="todo.id" v-on:itemchange="$emit('reloadlist')">
+                <th scope="row">{{ index + 1 }}</th>
+                <td>{{ todo.task_name }}</td>
+                <td>{{ todo.date }}</td>
                 <td>@mdo</td>
-                </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td>Munna</td>
-                <td>Larry the Bird</td>
-                <td>@Thornton</td>
                 </tr>
             </tbody>
         </table>
@@ -40,9 +28,13 @@
         </div>
     </div>
 </template>
-<script>
+<script >
+import axios from 'axios';
 export default {
-
+    name : "Table",
+    props:{
+        todos : Array,
+    }
 }
 </script>
 <style>
