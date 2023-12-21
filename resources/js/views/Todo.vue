@@ -26,8 +26,10 @@ export default {
         })
         }
     },
+
     mounted(){
         this.getTask();
+        // this.removeitem();
     }
 
 }

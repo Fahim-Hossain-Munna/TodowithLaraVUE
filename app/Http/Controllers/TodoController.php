@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use App\Models\User;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 
@@ -60,7 +61,11 @@ class TodoController extends Controller
      */
     public function edit(Todo $todo)
     {
-        //
+        return response()->json([
+            'data' => $todo,
+            'message' => 'success',
+            'status' => 200
+        ]);
     }
 
     /**
@@ -68,7 +73,19 @@ class TodoController extends Controller
      */
     public function update(Request $request, Todo $todo)
     {
-        //
+        // return $todo->id;
+
+       $updateData = Todo::find($todo->id)->update([
+            'task_name' => $request->task_name,
+            'date' => $request->date,
+            'updated_at' => now()
+        ]);
+
+        return response()->json([
+            'data' => $updateData,
+            'message' => 'success',
+            'status' => 220
+        ]);
     }
 
     /**
@@ -76,6 +93,10 @@ class TodoController extends Controller
      */
     public function destroy(Todo $todo)
     {
-        //
+        $todo->delete();
+
+        return response()->json([
+            'message' => 'success'
+        ]);
     }
 }

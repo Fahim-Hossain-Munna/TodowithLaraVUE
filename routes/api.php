@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-// Route::resource('/todo', TodoController::class);
+Route::resource('/todo', TodoController::class);
 
-Route::get('/todo', [TodoController::class, 'index']);
-Route::post('/todo', [TodoController::class, 'store']);
+// Route::get('/todo', [TodoController::class, 'index']);
+// Route::post('/todo', [TodoController::class, 'store']);
+// Route::post('/todo/delete', [TodoController::class, 'delete']);
